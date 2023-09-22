@@ -1,0 +1,37 @@
+
+
+plugins {
+    id 'java'
+}
+
+apply plugin: 'java'
+
+repositories {
+	mavenCentral()
+}
+
+jar {
+	baseName='jsoup'
+	version='1.0.0-SNAPSHOT'
+}
+
+dependencies {
+	
+    implementation fileTree(dir: 'ant-libs', include: ['*.jar'])
+    // junit
+    testImplementation 'junit:junit:4.12'
+
+    // gson, to fetch entities from w3.org
+    testImplementation 'com.google.code.gson:gson:2.7'
+
+    // jetty for webserver integration tests. 9.2 is last with Java7 support
+    testImplementation 'org.eclipse.jetty:jetty-server:9.2.28.v20190418'
+
+    // jetty for webserver integration tests
+    testImplementation 'org.eclipse.jetty:jetty-servlet:9.2.28.v20190418'
+
+    description = 'yifeik3'
+    
+    buildDir = 'gradle-target'
+}	
+
