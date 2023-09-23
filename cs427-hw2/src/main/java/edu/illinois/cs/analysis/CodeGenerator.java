@@ -62,7 +62,8 @@ public class CodeGenerator extends VoidVisitorAdapter
 			// implementation to add the method with only one statement: "String
 			// str = super.toString();" for your reference, and you can complete
 			// the implementation to include the remaining statements here
-
+			// Add code for calculating length and condition
+			
 			n.addMethod("toString", Modifier.Keyword.PUBLIC).setType("String")
 					.addAnnotation(ann).setBody(body);
 		}

@@ -22,7 +22,28 @@ public class CodeModifier extends VoidVisitorAdapter
 		super.visit(n, arg);
 		// TODO: complete this visit function to automatically switch the two
 		// operands for all null checks specified in the homework assignment
-	}
+		if (n.getLeft().isNullLiteralExpr() || n.getRight().isNullLiteralExpr()&& (n.getOperator() == BinaryExpr.Operator.EQUALS || n.getOperator() == BinaryExpr.Operator.NOT_EQUALS) ) {
+				if (n.getLeft().isNullLiteralExpr() && !n.getRight().isNullLiteralExpr()) {
+					Expression right = n.getRight();
+					n.setRight(n.getLeft());
+					n.setLeft(right);
+					return;
+				}  
+				if (!n.getLeft().isNullLiteralExpr() && n.getRight().isNullLiteralExpr()) {
+					Expression left = n.getLeft();
+					n.setLeft(n.getRight());
+					n.setRight(left);
+					return;
+				} 
+				// else {
+				// 	Expression left = n.getLeft();
+				// 	Expression right = n.getRight();
+				// 	n.setLeft(right);
+				// 	n.setRight(left);
+				// }
+		}
+}
+
 
 	// The following three visit functions are used to remove all comments to
 	// facilicate the comparison with the expected version; please do not change

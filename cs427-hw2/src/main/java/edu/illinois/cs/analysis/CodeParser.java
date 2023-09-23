@@ -22,7 +22,7 @@ public class CodeParser extends VoidVisitorAdapter
 		
 		// TODO: add your implementation here so that it counts the methods
 		// satisfying the listed constriants rather than all possible methods
-		if (n.getBody().isPresent() && !n.getParameters().isEmpty() && n.isPublic() && !n.isStatic() && !n.isVoidType()) {
+		if (n.getBody().isPresent() && !n.getParameters().isEmpty() && n.isPublic() && !n.isStatic() && !n.getType().isVoidType()) {
 			methNum++;
 		}		
 	}
